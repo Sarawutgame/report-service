@@ -1,9 +1,10 @@
-package com.example.reportservice.rest;
+package com.example.reportservice.core.event;
 
 import lombok.Data;
 
 @Data
-public class CreateReportModel {
+public class ReportUpdatedEvent {
+    private String _id;
     private String userReportId;
     private String userReportName;
     private String typeReport;

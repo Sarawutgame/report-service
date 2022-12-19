@@ -1,4 +1,4 @@
-package com.example.reportservice.event;
+package com.example.reportservice.core.event;
 
 import lombok.Data;
 

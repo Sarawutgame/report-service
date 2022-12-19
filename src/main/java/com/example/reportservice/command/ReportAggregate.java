@@ -1,6 +1,7 @@
 package com.example.reportservice.command;
 
-import com.example.reportservice.event.ReportCreatedEvent;
+import com.example.reportservice.core.event.ReportCreatedEvent;
+import com.example.reportservice.core.event.ReportUpdatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -34,6 +35,16 @@ public class ReportAggregate {
         AggregateLifecycle.apply(reportCreatedEvent);
     }
 
+    @CommandHandler
+    public void handle(UpdateReportCommand updateReportCommand){
+        if (updateReportCommand.getReportDescription() == null || updateReportCommand.getReportDescription().isBlank()){
+            throw new IllegalArgumentException("Can't Des Empty");
+        }
+        ReportUpdatedEvent reportUpdatedEvent = new ReportUpdatedEvent();
+        BeanUtils.copyProperties(updateReportCommand, reportUpdatedEvent);
+        AggregateLifecycle.apply(reportUpdatedEvent);
+    }
+
     @EventSourcingHandler
     public void on(ReportCreatedEvent reportCreatedEvent){
         this._id = reportCreatedEvent.get_id();
@@ -44,5 +55,17 @@ public class ReportAggregate {
         this.reportHeader = reportCreatedEvent.getReportHeader();
         this.reportDescription = reportCreatedEvent.getReportDescription();
         this.judge = reportCreatedEvent.isJudge();
+    }
+
+    @EventSourcingHandler
+    public void on(ReportUpdatedEvent reportUpdatedEvent){
+        this._id = reportUpdatedEvent.get_id();
+        this.userReportId = reportUpdatedEvent.getUserReportId();
+        this.userReportName = reportUpdatedEvent.getUserReportName();
+        this.typeReport = reportUpdatedEvent.getTypeReport();
+        this.itemIdReport = reportUpdatedEvent.getItemIdReport();
+        this.reportHeader = reportUpdatedEvent.getReportHeader();
+        this.reportDescription = reportUpdatedEvent.getReportDescription();
+        this.judge = reportUpdatedEvent.isJudge();
     }
 }
