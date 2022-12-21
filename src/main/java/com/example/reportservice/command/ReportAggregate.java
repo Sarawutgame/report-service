@@ -20,6 +20,7 @@ public class ReportAggregate {
     private String itemIdReport;
     private String reportHeader;
     private String reportDescription;
+    private String banDescription;
     private boolean judge;
 
     public ReportAggregate() {
@@ -54,6 +55,7 @@ public class ReportAggregate {
         this.itemIdReport = reportCreatedEvent.getItemIdReport();
         this.reportHeader = reportCreatedEvent.getReportHeader();
         this.reportDescription = reportCreatedEvent.getReportDescription();
+        this.banDescription = reportCreatedEvent.getBanDescription();
         this.judge = reportCreatedEvent.isJudge();
     }
 
@@ -66,6 +68,7 @@ public class ReportAggregate {
         this.itemIdReport = reportUpdatedEvent.getItemIdReport();
         this.reportHeader = reportUpdatedEvent.getReportHeader();
         this.reportDescription = reportUpdatedEvent.getReportDescription();
+        this.banDescription = reportUpdatedEvent.getBanDescription();
         this.judge = reportUpdatedEvent.isJudge();
     }
 }

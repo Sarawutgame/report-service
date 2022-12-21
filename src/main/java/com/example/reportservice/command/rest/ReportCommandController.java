@@ -29,6 +29,7 @@ public class ReportCommandController {
                 .itemIdReport(model.getItemIdReport())
                 .reportHeader(model.getReportHeader())
                 .reportDescription(model.getReportDescription())
+                .banDescription(model.getBanDescription())
                 .judge(model.isJudge()).build();
         String result;
         try {
@@ -50,6 +51,7 @@ public class ReportCommandController {
                 .itemIdReport(model.getItemIdReport())
                 .reportHeader(model.getReportHeader())
                 .reportDescription(model.getReportDescription())
+                .banDescription(model.getBanDescription())
                 .judge(model.isJudge()).build();
         String result;
         try{

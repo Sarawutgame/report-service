@@ -11,5 +11,6 @@ public class ReportRestModel {
     private String itemIdReport;
     private String reportHeader;
     private String reportDescription;
+    private String banDescription;
     private boolean judge;
 }
