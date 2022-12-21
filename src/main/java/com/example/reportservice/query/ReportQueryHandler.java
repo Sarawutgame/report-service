@@ -20,7 +20,7 @@ public class ReportQueryHandler {
     @QueryHandler
     List<ReportRestModel> findReports(FindReportsQuery query){
         List<ReportRestModel> reportsRest = new ArrayList<>();
-        List<ReportEntity> storedReports = reportRepository.findAll();
+        List<ReportEntity> storedReports = reportRepository.findByNonJudge(query.isJudge());
         for (ReportEntity reportEntity : storedReports){
             ReportRestModel reportRestModel = new ReportRestModel();
             BeanUtils.copyProperties(reportEntity, reportRestModel);

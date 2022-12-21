@@ -22,7 +22,7 @@ public class ReportQueryController {
 
     @GetMapping("/getAll")
     public List<ReportRestModel> getReports(){
-        FindReportsQuery findReportsQuery = new FindReportsQuery();
+        FindReportsQuery findReportsQuery = new FindReportsQuery(false);
         List<ReportRestModel> reports = queryGateway
                 .query(findReportsQuery, ResponseTypes.multipleInstancesOf(ReportRestModel.class)).join();
         return reports;
