@@ -51,6 +51,11 @@
             <artifactId>axon-spring-boot-starter</artifactId>
             <version>4.6.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
